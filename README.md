@@ -1,8 +1,16 @@
-#Projektin alustus
-$ cd kansioon
-$ npm install
+## Projektin alustus
+```sh
+cd kansioon
+npm install
+```
 
-#Sovelluksen käynnistys
-$ npm start
+## Sovelluksen käynnistys
 
----> sovellus käynnistyy porttiin 3000. Mene selaimella osoitteeseen localhost:3000.
+```sh
+npm start
+```
+
+Tapahtuu seuraavaa:
+
+1. Sovellus käynnistyy porttiin 3000. 
+2. Mene selaimella osoitteeseen localhost:3000.
