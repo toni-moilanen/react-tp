@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
-import data from "./mockupdata";
 import { useState } from "react";
-//import Lounaanosat from "./components/Lounaanosat";
+import axios from "axios";
 
 const Aterianosat = ({ osat }) => {
   return (
@@ -18,8 +17,6 @@ const Ateria = ({ ateriantiedot }) => {
   const [numero, setNumero] = useState(0);
 
   const funktio = () => {
-    //Toteuta palvelimelle tiedon lähetys...
-
     setNumero(numero + 1);
   };
 
@@ -48,9 +45,22 @@ const PaivanAteriat = ({ paivantiedot }) => {
 //console.log(data.MenusForDays[0].SetMenus);
 
 const App = () => {
+  const [menu, setMenu] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/api/restaurants')
+      .then(res => {
+        console.log(res)
+        setMenu(res.data[0])
+        setLoading(false)
+      })
+    }, [])
+
   return (
     <div className="App">
-      <PaivanAteriat paivantiedot={data.MenusForDays[0]} />
+      {loading ? <p>loading...</p> : <PaivanAteriat paivantiedot={menu.MenusForDays[0]} />}
+      
     </div>
   );
 };
