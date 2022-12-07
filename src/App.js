@@ -14,17 +14,10 @@ const Aterianosat = ({ osat }) => {
 };
 
 const Ateria = ({ ateriantiedot }) => {
-  const [numero, setNumero] = useState(0);
-
-  const funktio = () => {
-    setNumero(numero + 1);
-  };
-
   return (
     <div className="Ateria">
       <div>Tyyppi:{ateriantiedot.Name}</div>
       <div>Hinta:{ateriantiedot.Price}</div>
-      <div onClick={funktio}>Tykätty: {numero}</div>
       <Aterianosat osat={ateriantiedot.Components} />
     </div>
   );
@@ -42,8 +35,6 @@ const PaivanAteriat = ({ paivantiedot }) => {
   );
 };
 
-//console.log(data.MenusForDays[0].SetMenus);
-
 const App = () => {
   const [menu, setMenu] = useState([])
   const [loading, setLoading] = useState(true)
@@ -60,7 +51,6 @@ const App = () => {
   return (
     <div className="App">
       {loading ? <p>loading...</p> : <PaivanAteriat paivantiedot={menu.MenusForDays[0]} />}
-      
     </div>
   );
 };
